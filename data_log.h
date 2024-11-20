@@ -7,13 +7,6 @@
 #include <float.h>
 #include <math.h>
 
-int datalog_from_can_log(DataLog* log, FILE* f, const char* dbc_path);
-int datalog_from_csv_log(DataLog* log, FILE* f);
-int datalog_from_accessport_log(DataLog* log, FILE* f);
-int datalog_channel_count(DataLog* log);
-void datalog_free(DataLog* log);
-void data_log_print_channels(DataLog* log);
-
 // Message structure
 typedef struct Message {
     double timestamp;
@@ -38,6 +31,13 @@ typedef struct DataLog {
     size_t channel_count;
     size_t channel_capacity;
 } DataLog;
+
+int datalog_from_can_log(DataLog* log, FILE* f, const char* dbc_path);
+int datalog_from_csv_log(DataLog* log, FILE* f);
+int datalog_from_accessport_log(DataLog* log, FILE* f);
+int datalog_channel_count(DataLog* log);
+void datalog_free(DataLog* log);
+void data_log_print_channels(DataLog* log);
 
 // DataLog functions
 DataLog* datalog_create(const char* name);

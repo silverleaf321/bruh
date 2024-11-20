@@ -126,7 +126,7 @@ int process_log_file(const GeneratorArgs* args) {
     }
 
     // Create data log
-    DataLog* data_log = datalog_create(""); // *******************
+    DataLog* data_log = datalog_create(""); 
     if (!data_log) {
         fclose(f);
         return -1;
@@ -162,7 +162,7 @@ int process_log_file(const GeneratorArgs* args) {
        datalog_channel_count(data_log));
 
     // Print channel info
-    datalog_print_channels(data_log);
+    data_log_print_channels(data_log);
 
     // Create MoTeC log
     printf("Converting to MoTeC log...\n");
