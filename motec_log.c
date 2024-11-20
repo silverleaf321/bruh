@@ -295,3 +295,32 @@ void write_ld_channel(LDChannel* channel, FILE* f, int channel_index) {
     fwrite(channel->short_name, sizeof(char), 8, f);
     fwrite(channel->unit, sizeof(char), 12, f);
 }
+
+
+
+// ********
+void motec_log_set_metadata(MotecLog* log,
+                           const char* driver,
+                           const char* vehicle_id, 
+                           unsigned int vehicle_weight,
+                           const char* vehicle_type,
+                           const char* vehicle_comment,
+                           const char* venue_name,
+                           const char* event_name,
+                           const char* event_session,
+                           const char* long_comment,
+                           const char* short_comment) {
+    
+    if (driver) strncpy(log->driver, driver, sizeof(log->driver)-1);
+    if (vehicle_id) strncpy(log->vehicle_id, vehicle_id, sizeof(log->vehicle_id)-1);
+    log->vehicle_weight = vehicle_weight;
+    if (vehicle_type) strncpy(log->vehicle_type, vehicle_type, sizeof(log->vehicle_type)-1);
+    if (vehicle_comment) strncpy(log->vehicle_comment, vehicle_comment, sizeof(log->vehicle_comment)-1);
+    if (venue_name) strncpy(log->venue_name, venue_name, sizeof(log->venue_name)-1);
+    if (event_name) strncpy(log->event_name, event_name, sizeof(log->event_name)-1);
+    if (event_session) strncpy(log->event_session, event_session, sizeof(log->event_session)-1);
+    if (long_comment) strncpy(log->long_comment, long_comment, sizeof(log->long_comment)-1);
+    if (short_comment) strncpy(log->short_comment, short_comment, sizeof(log->short_comment)-1);
+}
+
+// ***********
