@@ -41,4 +41,16 @@ int motec_log_write(MotecLog* log, const char* filename);
 void write_ld_header(LDHeader* header, FILE* f, int channel_count);
 void write_ld_channel(LDChannel* channel, FILE* f, int channel_index);
 
+void motec_log_set_metadata(MotecLog* log, 
+                           const char* driver,
+                           const char* vehicle_id,
+                           unsigned int vehicle_weight,
+                           const char* vehicle_type,
+                           const char* vehicle_comment,
+                           const char* venue_name,
+                           const char* event_name,
+                           const char* event_session,
+                           const char* long_comment,
+                           const char* short_comment);
+
 #endif

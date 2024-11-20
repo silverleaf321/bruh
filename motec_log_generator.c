@@ -157,18 +157,18 @@ int process_log_file(const GeneratorArgs* args) {
         return -1;
     }
 
-    printf("Parsed %.1fs log with %d channels:\n", 
-           data_log_duration(data_log), 
-           data_log_channel_count(data_log));
+    printf("Parsed %.1fs log with %d channels:\n",
+       datalog_duration(data_log),  // Returns double
+       datalog_channel_count(data_log));
 
     // Print channel info
-    data_log_print_channels(data_log);
+    datalog_print_channels(data_log);
 
     // Create MoTeC log
     printf("Converting to MoTeC log...\n");
     MotecLog* motec_log = motec_log_create();
     if (!motec_log) {
-        data_log_free(data_log);
+        datalog_free(data_log);
         return -1;
     }
 
@@ -206,7 +206,7 @@ int process_log_file(const GeneratorArgs* args) {
     free(output_filename);
     free(output_dir);
     motec_log_free(motec_log);
-    data_log_free(data_log);
+    datalog_free(data_log);
 
     if (result == 0) {
         printf("Done!\n");
