@@ -70,7 +70,7 @@ int datalog_from_csv_log(DataLog* log, FILE* f) {
 
 
     // Parse data
-    while (fgets(line, MAX_LINE_LENGTH, file)) {
+    while (fgets(line, MAX_LINE_LENGTH, f)) {
         char* value_str = strtok(line, ",");
         double timestamp = atof(value_str);
         
@@ -143,9 +143,9 @@ int datalog_from_csv_log(DataLog* log, FILE* f) {
         return -1;
     }
 
-    int datalog_from_csv_log(DataLog* log, FILE* f) {
-        return datalog_from_csv(log, f);
-    }
+    // int datalog_from_csv_log(DataLog* log, FILE* f) {
+    //     return datalog_from_csv(log, f);
+    // }
 
     int datalog_from_accessport_log(DataLog* log, FILE* f) {
         // Implementation depends on Accessport format
